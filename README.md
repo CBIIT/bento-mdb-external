@@ -27,39 +27,11 @@ This repository contains the full pipeline used to ingest Uberon anatomy terms i
 ## Workflow Overview
 
 The ingestion pipeline follows these stages:
-    Uberon OWL Ontology
-        │
-        ▼
-    SPARQL Extraction
-        │
-        ▼
-    CSV Ontology Dataset
-        │
-        ▼
-    Flattening + Normalization
-        │
-        ▼
-    JSON Flat Term Objects
-        │
-        ▼
-    Python Ingestion Scripts
-        │
-        ▼
-    Neo4j MDB Graph
-        │
-        ▼
-    Term Nodes
-    Concept Nodes
-    Tag Nodes
-        │
-        ▼
-    Future Integration
-    Value Sets → GC Terms
 
+    Uberon OWL Ontology -> SPARQL Extraction -> CSV Ontology Dataset -> Flattening + Normalization -> JSON Flat Term Objects
+    Python Ingestion Scripts -> Neo4j MDB Graph -> Term Nodes, Concept Nodes, Tag Nodes -> Further Integration: Value Sets → GC Term
 
-
-Step 1 — Selecting the Uberon Dataset
-
+**Step 1 — Selecting the Uberon Dataset**
 The first step was identifying the appropriate Uberon dataset to meet MDB user requirements.
 
 Uberon provides ontology releases in several formats:
@@ -89,7 +61,7 @@ The OWL file contains:
 
 However, the OWL format is not directly usable for ingestion into MDB, so the ontology needed to be queried with sparql, extracted and transformed.
 
-Step 2 — Extracting Data with SPARQL
+**Step 2 — Extracting Data with SPARQL**
 
 To extract only the relevant ontology fields, SPARQL queries were written against the OWL file.
 
@@ -105,9 +77,7 @@ SPARQL was used to retrieve and store the following information into a csv file:
 | xrefs | external references |
 
 
----
-
-Step 3 — Dataset Flattening
+**Step 3 — Dataset Flattening**
 
 The CSV dataset contained nested synonym structures that are not compatible with the MDB format.
 
@@ -135,8 +105,8 @@ Example for mappings json:
     { "value": "hepatic tissue" }
   ]
 }
-
-Step 4 - Inserting Terms
+```
+**Step 4 - Inserting Terms**
 
 Primary Uberon terms were inserted into Neo4j as Term nodes using a Python ingestion script.
 
@@ -155,7 +125,7 @@ Term properties include:
 | _commit             | ingestion commit              |
 
 
-Step 5 — Inserting Synonym Terms
+**Step 5 — Inserting Synonym Terms**
 
 Synonyms were inserted as additional Term nodes.
 
@@ -165,7 +135,7 @@ This ensures:
 -  normalized graph structure
 -  easier semantic linking
 
-Step 6 — Linking Terms with Concepts
+**Step 6 — Linking Terms with Concepts**
 
 Synonyms are linked to their primary terms through Concept nodes.
 
@@ -182,7 +152,7 @@ mapping_src = "uberon"
 
 This allows filtering or auditing ontology mappings by source.
 
-Step 7. Value Set Integration 
+**Step 7. Value Set Integration**
 
 (WIP)
 
