@@ -218,6 +218,7 @@ __marimo__/
 
 # temporary files
 /uberon_synonyms.yaml
+.DS_Store
 
 # experimental stuff
 /uberon_synonym_mapping_test.json
