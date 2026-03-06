@@ -1,0 +1,7 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT (COUNT(DISTINCT ?id) as ?count)
+WHERE {
+  ?id a owl:Class .
+  FILTER(STRSTARTS(STR(?id), "http://purl.obolibrary.org/obo/UBERON_"))
+}

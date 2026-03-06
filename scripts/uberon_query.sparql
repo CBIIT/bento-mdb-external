@@ -1,0 +1,18 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX IAO: <http://purl.obolibrary.org/obo/IAO_>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?id ?label ?definition ?xref ?exact_synonym ?rel_synonym
+WHERE {
+  ?id a owl:Class .
+
+  OPTIONAL { ?id rdfs:label ?label . }
+  OPTIONAL { ?id IAO:0000115 ?definition . }
+  OPTIONAL { ?id oboInOwl:hasDbXref ?xref . }
+
+  OPTIONAL { ?id oboInOwl:hasExactSynonym ?exact_synonym . }
+  OPTIONAL { ?id oboInOwl:hasRelatedSynonym ?rel_synonym . }
+
+  FILTER(STRSTARTS(STR(?id), "http://purl.obolibrary.org/obo/UBERON_"))
+}

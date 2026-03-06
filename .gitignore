@@ -131,6 +131,8 @@ __pypackages__/
 celerybeat-schedule
 celerybeat.pid
 
+
+
 # SageMath parsed files
 *.sage.py
 
@@ -205,3 +207,23 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# ----------------------------
+# Project-specific ignores
+# ----------------------------
+# Supplemental Reference Material 
+/CCDI Ref
+/experiments
+
+# temporary files
+/uberon_synonyms.yaml
+
+# experimental stuff
+/uberon_synonym_mapping_test.json
+/insert_uberon_rels.py
+/insert_mainterms.cypher
+/human_view_test.csv
+/insert_uberon_terms.cypher
+/insert_uberon_terms_bulk.cypher
+
