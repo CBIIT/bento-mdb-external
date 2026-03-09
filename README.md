@@ -168,7 +168,6 @@ uberon_ingestion
 │ ├── uberon_synonyms new.yaml // converted from human_view_clean.csv using script "uberon_csv_to_yaml_json.py"
 │ ├── uberon_synonyms.json // converted from uberon_synonyms new.yaml using script "uberon_csv_to_yaml_json.py"
 │ ├── uberon_synonym_mapping.json // mapping made to connect terms with synonyms, source: human_view_clean.csv, script: build_syn_mappings.py
-
 │
 ├── scripts/
 │ ├── build_syn_mappings.py //used to create the mapping file
