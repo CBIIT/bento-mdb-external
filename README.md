@@ -158,29 +158,31 @@ This allows filtering or auditing ontology mappings by source.
 
 ## Repository Structure
 
-Example project structure:
+## Example Project Structure
 
-uberon_ingestion
-├── data/
-│ ├── human_view_clean.csv
-│ ├── uberon_terms_main.yaml // converted from human_view_clean.csv using script "uberon_csv_to_yaml_json.py"
-| ├── uberon_terms.json // converted from uberon_terms_main.yaml using script "uberon_csv_to_yaml_json.py"
-│ ├── uberon_synonyms new.yaml // converted from human_view_clean.csv using script "uberon_csv_to_yaml_json.py"
-│ ├── uberon_synonyms.json // converted from uberon_synonyms new.yaml using script "uberon_csv_to_yaml_json.py"
-│ ├── uberon_synonym_mapping.json // mapping made to connect terms with synonyms, source: human_view_clean.csv, script: build_syn_mappings.py
-│
-├── scripts/
-│ ├── build_syn_mappings.py //used to create the mapping file
-│ ├── insert_uberon_relationships.py // used to merge relationships, create concept nodes and tag nodes
-│ ├── insert_uberon_terms.py // used to merge term nodes and synonym nodes 
-│ ├── test_connection.py // used to ensure connection 
-│ ├── uberon_query.sparql // contains sparql query to extract data from .owl file 
-│ ├── sanity_check.sparql // contains counting and tallying of data from .owl file 
-│
-├── logs/
-│ └── cypher_queries.log (WIP)
-│
-└── README.md
+    uberon_ingestion
+    ├── data/
+    │   ├── human_view_clean.csv
+    │   ├── uberon_terms_main.yaml          # converted from human_view_clean.csv using script "uberon_csv_to_yaml_json.py"
+    │   ├── uberon_terms.json               # converted from uberon_terms_main.yaml using script "uberon_csv_to_yaml_json.py"
+    │   ├── uberon_synonyms_new.yaml        # converted from human_view_clean.csv using script "uberon_csv_to_yaml_json.py"
+    │   ├── uberon_synonyms.json            # converted from uberon_synonyms_new.yaml using script "uberon_csv_to_yaml_json.py"
+    │   ├── uberon_synonym_mapping.json     # mapping made to connect terms with synonyms
+    │   │                                   # source: human_view_clean.csv
+    │   │                                   # script: build_syn_mappings.py
+    │
+    ├── scripts/
+    │   ├── build_syn_mappings.py           # used to create the mapping file
+    │   ├── insert_uberon_relationships.py  # used to merge relationships, create concept nodes and tag nodes
+    │   ├── insert_uberon_terms.py          # used to merge term nodes and synonym nodes
+    │   ├── test_connection.py              # used to ensure connection
+    │   ├── uberon_query.sparql             # contains sparql query to extract data from .owl file
+    │   ├── sanity_check.sparql             # contains counting and tallying of data from .owl file
+    │
+    ├── logs/
+    │   └── cypher_queries.log (WIP)
+    │
+    └── README.md
 
 
 ### Directory Description
