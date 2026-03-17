@@ -167,9 +167,8 @@ This allows filtering or auditing ontology mappings by source.
     │   ├── uberon_terms.json               # converted from uberon_terms_main.yaml using script "uberon_csv_to_yaml_json.py"
     │   ├── uberon_synonyms_new.yaml        # converted from human_view_clean.csv using script "uberon_csv_to_yaml_json.py"
     │   ├── uberon_synonyms.json            # converted from uberon_synonyms_new.yaml using script "uberon_csv_to_yaml_json.py"
-    │   ├── uberon_synonym_mapping.json     # mapping made to connect terms with synonyms
-    │   │                                   # source: human_view_clean.csv
-    │   │                                   # script: build_syn_mappings.py
+    │   ├── uberon_synonym_mapping.json     # mapping made to connect terms with synonyms. source: human_view_clean.csv, script: build_syn_mappings.py
+    │   
     │
     ├── scripts/
     │   ├── build_syn_mappings.py           # used to create the mapping file
@@ -178,9 +177,13 @@ This allows filtering or auditing ontology mappings by source.
     │   ├── test_connection.py              # used to ensure connection
     │   ├── uberon_query.sparql             # contains sparql query to extract data from .owl file
     │   ├── sanity_check.sparql             # contains counting and tallying of data from .owl file
+    │   ├── cde_valueset_integration        # used to create valueset, connect to original cdes 
     │
-    ├── logs/
-    │   └── cypher_queries.log (WIP)
+    ├── logs/                                         # cypherlogs  for running queries on prefect - ordered
+    │   ├── 01_batch_insert_uberon_terms.cql          # generated from script insert_uberon_terms.py 
+    │   ├── 01_batch_insert_uberon_synonyms.cql       # generated from script insert_uberon_terms.py 
+    │   ├── 02_batch_insert_uberon_relationships.cql  # generated from script insert_uberon_relationships.py 
+    │   ├── 03_cde_valueset_integration.cql           # generated from script cde_valueset_integration.py
     │
     └── README.md
 

@@ -228,3 +228,4 @@ __marimo__/
 /insert_uberon_terms.cypher
 /insert_uberon_terms_bulk.cypher
 
+.DS_Store
