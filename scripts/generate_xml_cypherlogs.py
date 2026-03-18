@@ -61,7 +61,7 @@ def main():
     with open(OUTPUT_FILE, "w") as f:
         f.write(xml_content)
 
-    print(f"✅ Generated {OUTPUT_FILE} with {len(batches)} changeSets")
+    print(f"Generated {OUTPUT_FILE} with {len(batches)} changeSets")
 
 
 if __name__ == "__main__":
